@@ -1,0 +1,19 @@
+{
+  "name": "velvet-vine",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Velvet Vine website \u2014 Next.js frontend, NestJS API, SQLite database",
+  "scripts": {
+    "install:all": "npm install && npm --prefix backend install && npm --prefix frontend install",
+    "dev": "concurrently -n api,web -c yellow,cyan \"npm --prefix backend run start:dev\" \"npm --prefix frontend run dev\"",
+    "dev:api": "npm --prefix backend run start:dev",
+    "dev:web": "npm --prefix frontend run dev",
+    "build": "npm --prefix backend run build && npm --prefix frontend run build",
+    "start": "concurrently -n api,web -c yellow,cyan \"npm --prefix backend run start:prod\" \"npm --prefix frontend run start\"",
+    "typecheck": "npm --prefix backend run typecheck && npm --prefix frontend run typecheck",
+    "db:reset": "node -e \"require('fs').rmSync('database/app.sqlite',{force:true});console.log('Database removed; it will be recreated and re-seeded on next API start.')\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
